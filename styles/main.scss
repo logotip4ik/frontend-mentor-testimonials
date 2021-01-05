@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+$primary-violet: hsl(263, 55%, 52%);
+$primary-grayish-blue: hsl(217, 19%, 35%);
+$primary-blackish-blue: hsl(219, 29%, 14%);
+
+$neutral-gray: hsl(0, 0%, 81%);
+$neutral-grayish-blue: hsl(210, 46%, 95%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 13px;
+  background-color: $neutral-grayish-blue;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 1rem;
+  display: grid;
+  grid-template-areas:
+    'daniel daniel jonathan  kira'
+    'jeanette patrick patrick kira';
+  // grid-template-rows: 0.65fr 0.35fr;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  padding: 1.75rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px 0px rgba($color: #000000, $alpha: 0.1),
+    2px 2px 10px 0 rgba($color: #000000, $alpha: 0.2);
+  margin: 0.75rem;
+  position: relative;
+  z-index: 1;
+
+  &__header {
+    display: grid;
+    grid-template-areas: 'avatar name' 'avatar subtitle';
+    grid-template-columns: min-content max-content;
+    margin-bottom: 1.25rem;
+
+    &__name {
+      grid-area: name;
+    }
+    &__subtitle {
+      grid-area: subtitle;
+      color: transparentize($color: white, $amount: 0.5);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  &--purple {
+    background-color: $primary-violet;
+    color: $neutral-grayish-blue;
+    .card__text {
+      color: transparentize($color: $neutral-grayish-blue, $amount: 0.3);
+    }
+    .card--avatar {
+      border: 2px solid transparentize($color: $neutral-gray, $amount: 0.5);
+    }
+  }
+  &--grey {
+    background-color: $primary-grayish-blue;
+    color: $neutral-grayish-blue;
+    .card__text {
+      color: transparentize($color: $neutral-grayish-blue, $amount: 0.3);
+    }
+    .card--avatar {
+      border: 2px solid transparentize($color: white, $amount: 0.5);
+    }
+  }
+  &--dark {
+    background-color: $primary-blackish-blue;
+    color: $neutral-grayish-blue;
+    .card__text {
+      color: transparentize($color: $neutral-grayish-blue, $amount: 0.3);
+    }
+    .card--avatar {
+      border: 2px solid transparentize($color: $primary-violet, $amount: 0.5);
+    }
+  }
+  &--white {
+    color: $primary-grayish-blue;
+    .card__text {
+      color: transparentize($color: $primary-grayish-blue, $amount: 0.3);
+    }
+    .card__header__subtitle {
+      color: transparentize($color: $primary-grayish-blue, $amount: 0.5);
+    }
+  }
+
+  &--daniel {
+    grid-area: daniel;
+  }
+  &--jeanette {
+    grid-area: jeanette;
+  }
+  &--jonathan {
+    grid-area: jonathan;
+  }
+  &--patrick {
+    grid-area: patrick;
+  }
+  &--kira {
+    grid-area: kira;
+  }
+
+  &--avatar {
+    border-radius: 50%;
+    width: 35px;
+    height: auto;
+    margin-right: 1rem;
+    grid-area: avatar;
+  }
+
+  &__bg-image {
+    position: absolute;
+    top: 0;
+    right: 15%;
+    z-index: -1;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.attribution {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: $primary-grayish-blue;
+
+  a {
+    color: $primary-grayish-blue;
+    text-decoration: none;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
