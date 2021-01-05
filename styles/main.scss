@@ -94,6 +94,7 @@ body {
     }
   }
   &--white {
+    background-color: white;
     color: $primary-grayish-blue;
     .card__text {
       color: transparentize($color: $primary-grayish-blue, $amount: 0.3);
